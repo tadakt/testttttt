@@ -1,18 +1,21 @@
 on:
-    push:
-        branches: main
+  push:
+      branches: main
 
 jobs:
-    build:
-        name: Build
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v3
-        - name: copy file via ssh password
-          uses: appleboy/scp-action@v0.1.4
-          with:
-            host: 125.131.131.26
-            key: ${{ secrets.SSH_KEY }}
-            port: 23
-            source: "./*"
-            target: our-view-fe
+  build:
+      name: Build
+      runs-on: ubuntu-latest
+      steps:
+          - name: Checkout source code
+            uses: actions/checkout@v3
+            
+          - name: copy file via ssh password
+            uses: appleboy/scp-action@master
+            with:
+              username: rasp
+              host: 125.131.131.26
+              key: ${{ secrets.SSH_KEY }}
+              port: 23
+              source: "./*"
+              target: our-view-fe
