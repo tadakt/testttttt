@@ -16,6 +16,6 @@ jobs:
               username: rasp
               host: 125.131.131.26
               key: ${{ secrets.SSH_KEY }}
-              port: 23
+              port: 22
               source: "./*"
               target: our-view-fe
